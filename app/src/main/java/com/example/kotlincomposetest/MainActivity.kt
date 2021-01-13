@@ -28,7 +28,8 @@ import com.example.kotlincomposetest.ui.KotlinComposeTestTheme
 import com.example.kotlincomposetest.ui.typography
 import kotlin.random.Random
 import androidx.compose.material.Button
-import androidx.compose.foundation.Text as Text1
+//import androidx.compose.foundation.Text
+import androidx.compose.material.Text
 
 class MainActivity : AppCompatActivity() {
     private val imageUrl = R.drawable.liyu
@@ -59,7 +60,8 @@ fun Counter(count: Int, updateCount: (Int) -> Unit) {
 @Composable
 fun SayHello(Text: String) {
     Column() {
-        Text("Hello $Text",
+        Text(
+            "Hello $Text",
             modifier = Modifier.padding(24.dp),
             style = MaterialTheme.typography.h1
         )

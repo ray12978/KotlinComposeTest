@@ -42,6 +42,3 @@ fun KotlinComposeTestTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: 
             content = content
     )
 }
-
-@Composable
-fun
