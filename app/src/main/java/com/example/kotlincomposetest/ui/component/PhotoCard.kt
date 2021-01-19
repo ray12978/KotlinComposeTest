@@ -1,5 +1,6 @@
-package com.example.kotlincomposetest.component
+package com.example.kotlincomposetest.ui.component
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -9,17 +10,18 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.kotlincomposetest.Content
-import com.example.kotlincomposetest.ui.KotlinComposeTestTheme
+import com.example.kotlincomposetest.ui.theme.KotlinComposeTestTheme
 import androidx.compose.runtime.Providers
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.unit.dp
-import com.example.kotlincomposetest.MyScreenContent
+import com.example.kotlincomposetest.R
 
 @Composable
 fun PhotographerCard() {
+    val image = imageResource(R.drawable.liyu)
     Row(
         modifier = Modifier
             .padding(8.dp)
@@ -36,6 +38,7 @@ fun PhotographerCard() {
             color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
         ) {
             // Image goes here
+            Image(bitmap = image)
         }
         Column(
             modifier = Modifier

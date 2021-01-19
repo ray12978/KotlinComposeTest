@@ -24,12 +24,11 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.annotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.kotlincomposetest.ui.KotlinComposeTestTheme
-import com.example.kotlincomposetest.ui.typography
+import com.example.kotlincomposetest.ui.theme.KotlinComposeTestTheme
+import com.example.kotlincomposetest.ui.theme.typography
 import kotlin.random.Random
 import androidx.compose.material.Button
-//import androidx.compose.foundation.Text
-import androidx.compose.material.Text
+
 
 class MainActivity : AppCompatActivity() {
     private val imageUrl = R.drawable.liyu
@@ -38,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                //Greeting(name = "Hello")
-                MyScreenContent()
+                Greeting(name = "Hello")
+                //MyScreenContent()
             }
         }
     }
@@ -90,37 +89,42 @@ fun MyScreenContent(names: List<String> = listOf("Android", "there")) {
 @Composable
 fun Greeting(name: String) {
     val image = imageResource(R.drawable.header)
-    MaterialTheme {
-        val typography = MaterialTheme.typography
-        Column(Modifier.padding(16.dp)) {
-            val imageModifier = Modifier
-                .preferredHeight(180.dp)
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(10.dp))
 
-            Image(
-                image,
-                modifier = imageModifier,
-                contentScale = ContentScale.Crop
-            )
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+    val typography = MaterialTheme.typography
+    Column(Modifier.padding(16.dp)) {
+        val imageModifier = Modifier
+            .preferredHeight(180.dp)
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp))
 
-            Text(
-                "A day wandering through the sandhills " +
-                        "in Shark Fin Cove, and a few of the " +
-                        "sights I saw",
-                style = typography.h6
-            )
-            Text(
-                "YOLO",
-                style = typography.body2
-            )
-            Text(
-                "You Only Live Once",
-                style = typography.body1
-            )
-        }
+        Image(
+            image,
+            modifier = imageModifier,
+            contentScale = ContentScale.Crop
+        )
+        Spacer(modifier = Modifier.preferredHeight(16.dp))
+
+        Text(
+            text = "A day wandering through the sandhills " +
+                    "in Shark Fin Cove, and a few of the " +
+                    "sights I saw",
+            style = typography.h6,
+            color = MaterialTheme.colors.secondary
+        )
+        Divider(color = MaterialTheme.colors.primaryVariant)
+        Text(
+            text = name,
+            style = typography.body2,
+            color = MaterialTheme.colors.secondary
+        )
+        Divider(color = MaterialTheme.colors.primaryVariant)
+        Text(
+            "You Only Live Once",
+            style = typography.body1,
+            color = MaterialTheme.colors.secondary
+        )
     }
+
 }
 
 @Composable
@@ -201,9 +205,7 @@ fun ChatMessage(
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     KotlinComposeTestTheme {
-        Surface(color = Color.Yellow) {
-            content()
-        }
+        content()
     }
 }
 
@@ -219,6 +221,6 @@ fun ChatText(text: String) {
 @Composable
 fun DefaultPreview() {
     KotlinComposeTestTheme {
-        //Greeting("Android")
+        Greeting("Android")
     }
 }
